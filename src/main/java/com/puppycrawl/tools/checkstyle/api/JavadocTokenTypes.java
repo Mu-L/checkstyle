@@ -1507,7 +1507,63 @@ public final class JavadocTokenTypes {
      */
     public static final int DT_HTML_TAG_NAME = JavadocParser.DT_HTML_TAG_NAME;
 
-    /** Head tag name. */
+    /**
+     * Head tag name.
+     *
+     * <p><b>Example:</b></p>
+     * <pre>{@code
+     * &lt;head&gt;
+     *   &lt;title&gt;Page Title&lt;/title&gt;
+     *   &lt;meta charset="UTF-8"&gt;
+     * &lt;/head&gt;
+     * }</pre>
+     * <b>Tree:</b>
+     * <pre>{@code
+     *  HEAD -> HEAD
+     *   |--HEAD_TAG_START -> HEAD_TAG_START
+     *   |   |--START -> <
+     *   |   |--HEAD_HTML_TAG_NAME -> head
+     *   |   `--END -> >
+     *   |--NEWLINE -> \r\n
+     *   |--LEADING_ASTERISK ->  *
+     *   |--TEXT ->
+     *   |--HTML_TAG -> HTML_TAG
+     *   |   |--HTML_ELEMENT_START -> HTML_ELEMENT_START
+     *   |   |   |--START -> <
+     *   |   |   |--HTML_TAG_NAME -> title
+     *   |   |   `--END -> >
+     *   |   |--TEXT -> Page Title
+     *   |   `--HTML_ELEMENT_END -> HTML_ELEMENT_END
+     *   |       |--START -> <
+     *   |       |--SLASH -> /
+     *   |       |--HTML_TAG_NAME -> title
+     *   |       `--END -> >
+     *   |--NEWLINE -> \r\n
+     *   |--LEADING_ASTERISK ->  *
+     *   |--TEXT ->
+     *   |--SINGLETON_ELEMENT -> SINGLETON_ELEMENT
+     *   |   `--META_TAG -> META_TAG
+     *   |       |--START -> <
+     *   |       |--META_HTML_TAG_NAME -> meta
+     *   |       |--WS ->
+     *   |       |--ATTRIBUTE -> ATTRIBUTE
+     *   |       |   |--HTML_TAG_NAME -> charset
+     *   |       |   |--EQUALS -> =
+     *   |       |   `--ATTR_VALUE -> "UTF-8"
+     *   |       `--END -> >
+     *   |--NEWLINE -> \r\n
+     *   |--LEADING_ASTERISK ->  *
+     *   |--TEXT ->
+     *   `--HEAD_TAG_END -> HEAD_TAG_END
+     *       |--START -> <
+     *       |--SLASH -> /
+     *       |--HEAD_HTML_TAG_NAME -> head
+     *       `--END -> >
+     * }
+     * </pre>
+     *
+     * @see #HEAD_HTML_TAG_NAME
+     */
     public static final int HEAD_HTML_TAG_NAME = JavadocParser.HEAD_HTML_TAG_NAME;
 
     /** Html tag name. */
@@ -2804,9 +2860,37 @@ public final class JavadocTokenTypes {
     public static final int PARAM_TAG = JavadocParser.RULE_paramTag + RULE_TYPES_OFFSET;
 
     /**
-     * HTML void element {@code <embed>}.
+     * HTML void element.
      *
-     * @see #SINGLETON_ELEMENT
+     * <p><b>Example:</b></p>
+     * <pre>{@code
+     * <embed src="URL" type="MIME_type">
+     * }</pre>
+     * <b>Tree:</b>
+     * <pre>
+     * {@code
+     *    |--HTML_ELEMENT -> HTML_ELEMENT
+     *    |   `--SINGLETON_ELEMENT -> SINGLETON_ELEMENT
+     *    |       `--EMBED_TAG -> EMBED_TAG
+     *    |           |--START -> <
+     *    |           |--EMBED_HTML_TAG_NAME -> embed
+     *    |           |--WS ->
+     *    |           |--ATTRIBUTE -> ATTRIBUTE
+     *    |           |   |--HTML_TAG_NAME -> src
+     *    |           |   |--EQUALS -> =
+     *    |           |   `--ATTR_VALUE -> "URL"
+     *    |           |--WS ->
+     *    |           |--ATTRIBUTE -> ATTRIBUTE
+     *    |           |   |--HTML_TAG_NAME -> type
+     *    |           |   |--EQUALS -> =
+     *    |           |   `--ATTR_VALUE -> "MIME_type"
+     *    |           `--END -> >
+     *    |--NEWLINE -> \r\n
+     *    |--TEXT ->
+     * }
+     * </pre>
+     *
+     * @see #EMBED_TAG
      * @see <a href="https://www.w3.org/TR/html51/semantics-embedded-content.html#elementdef-embed">
      *     W3 docs</a>
      */
