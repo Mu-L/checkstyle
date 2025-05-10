@@ -25,7 +25,7 @@
     <fileName>src/main/java/com/puppycrawl/tools/checkstyle/Checker.java</fileName>
     <specifier>argument</specifier>
     <message>incompatible argument for parameter args of Checker.getLocalizedMessage.</message>
-    <lineContent>getLocalizedMessage(&quot;Checker.setupChildModule&quot;, name, ex.getMessage()), ex);</lineContent>
+    <lineContent>getLocalizedMessage(&quot;Checker.setupChildModule&quot;, name, exc.getMessage()), exc);</lineContent>
     <details>
       found   : @Initialized @Nullable String
       required: @Initialized @NonNull Object
@@ -884,7 +884,7 @@
     <fileName>src/main/java/com/puppycrawl/tools/checkstyle/TreeWalker.java</fileName>
     <specifier>argument</specifier>
     <message>incompatible argument for parameter args of Violation constructor.</message>
-    <lineContent>new Object[] {ex.getMessage()}, javaParseExceptionSeverity, null,</lineContent>
+    <lineContent>new Object[] {exc.getMessage()}, javaParseExceptionSeverity, null,</lineContent>
     <details>
       found   : @Initialized @Nullable Object @Initialized @NonNull []
       required: @Initialized @NonNull Object @Initialized @NonNull []
@@ -917,7 +917,7 @@
     <fileName>src/main/java/com/puppycrawl/tools/checkstyle/TreeWalker.java</fileName>
     <specifier>argument</specifier>
     <message>incompatible argument for parameter moduleId of Violation constructor.</message>
-    <lineContent>new Object[] {ex.getMessage()}, javaParseExceptionSeverity, null,</lineContent>
+    <lineContent>new Object[] {exc.getMessage()}, javaParseExceptionSeverity, null,</lineContent>
     <details>
       found   : null (NullType)
       required: @Initialized @NonNull String
@@ -1062,17 +1062,6 @@
   <checkerFrameworkError unstable="false">
     <fileName>src/main/java/com/puppycrawl/tools/checkstyle/ant/CheckstyleAntTask.java</fileName>
     <specifier>argument</specifier>
-    <message>incompatible argument for parameter checkstyleVersion of CheckstyleAntTask.realExecute.</message>
-    <lineContent>realExecute(version);</lineContent>
-    <details>
-      found   : @Initialized @Nullable String
-      required: @Initialized @NonNull String
-    </details>
-  </checkerFrameworkError>
-
-  <checkerFrameworkError unstable="false">
-    <fileName>src/main/java/com/puppycrawl/tools/checkstyle/ant/CheckstyleAntTask.java</fileName>
-    <specifier>argument</specifier>
     <message>incompatible argument for parameter moduleClassLoader of PackageObjectFactory constructor.</message>
     <lineContent>Checker.class.getPackage().getName() + &quot;.&quot;, moduleClassLoader);</lineContent>
     <details>
@@ -1103,7 +1092,7 @@
     <fileName>src/main/java/com/puppycrawl/tools/checkstyle/ant/CheckstyleAntTask.java</fileName>
     <specifier>dereference.of.nullable</specifier>
     <message>dereference of possibly-null reference CheckstyleAntTask.class.getPackage()</message>
-    <lineContent>final String version = CheckstyleAntTask.class.getPackage().getImplementationVersion();</lineContent>
+    <lineContent>CheckstyleAntTask.class.getPackage().getImplementationVersion(),</lineContent>
   </checkerFrameworkError>
 
   <checkerFrameworkError unstable="false">
@@ -1455,7 +1444,7 @@
     <fileName>src/main/java/com/puppycrawl/tools/checkstyle/checks/OrderedPropertiesCheck.java</fileName>
     <specifier>argument</specifier>
     <message>incompatible argument for parameter args of AbstractFileSetCheck.log.</message>
-    <lineContent>log(1, MSG_IO_EXCEPTION_KEY, file.getPath(), ex.getLocalizedMessage());</lineContent>
+    <lineContent>log(1, MSG_IO_EXCEPTION_KEY, file.getPath(), exc.getLocalizedMessage());</lineContent>
     <details>
       found   : @Initialized @Nullable String
       required: @Initialized @NonNull Object
@@ -1637,7 +1626,7 @@
     <fileName>src/main/java/com/puppycrawl/tools/checkstyle/checks/UniquePropertiesCheck.java</fileName>
     <specifier>argument</specifier>
     <message>incompatible argument for parameter args of AbstractFileSetCheck.log.</message>
-    <lineContent>ex.getLocalizedMessage());</lineContent>
+    <lineContent>exc.getLocalizedMessage());</lineContent>
     <details>
       found   : @Initialized @Nullable String
       required: @Initialized @NonNull Object
@@ -4820,65 +4809,10 @@
     <fileName>src/main/java/com/puppycrawl/tools/checkstyle/filters/SuppressFilterElement.java</fileName>
     <specifier>assignment</specifier>
     <message>incompatible types in assignment.</message>
-    <lineContent>columnFilter = null;</lineContent>
-    <details>
-      found   : null (NullType)
-      required: @Initialized @NonNull CsvFilterElement
-    </details>
-  </checkerFrameworkError>
-
-  <checkerFrameworkError unstable="false">
-    <fileName>src/main/java/com/puppycrawl/tools/checkstyle/filters/SuppressFilterElement.java</fileName>
-    <specifier>assignment</specifier>
-    <message>incompatible types in assignment.</message>
     <lineContent>lineFilter = null;</lineContent>
     <details>
       found   : null (NullType)
       required: @Initialized @NonNull CsvFilterElement
-    </details>
-  </checkerFrameworkError>
-
-  <checkerFrameworkError unstable="false">
-    <fileName>src/main/java/com/puppycrawl/tools/checkstyle/filters/SuppressFilterElement.java</fileName>
-    <specifier>assignment</specifier>
-    <message>incompatible types in assignment.</message>
-    <lineContent>lineFilter = null;</lineContent>
-    <details>
-      found   : null (NullType)
-      required: @Initialized @NonNull CsvFilterElement
-    </details>
-  </checkerFrameworkError>
-
-  <checkerFrameworkError unstable="false">
-    <fileName>src/main/java/com/puppycrawl/tools/checkstyle/filters/SuppressFilterElement.java</fileName>
-    <specifier>assignment</specifier>
-    <message>incompatible types in assignment.</message>
-    <lineContent>checkRegexp = null;</lineContent>
-    <details>
-      found   : null (NullType)
-      required: @Initialized @NonNull Pattern
-    </details>
-  </checkerFrameworkError>
-
-  <checkerFrameworkError unstable="false">
-    <fileName>src/main/java/com/puppycrawl/tools/checkstyle/filters/SuppressFilterElement.java</fileName>
-    <specifier>assignment</specifier>
-    <message>incompatible types in assignment.</message>
-    <lineContent>fileRegexp = null;</lineContent>
-    <details>
-      found   : null (NullType)
-      required: @Initialized @NonNull Pattern
-    </details>
-  </checkerFrameworkError>
-
-  <checkerFrameworkError unstable="false">
-    <fileName>src/main/java/com/puppycrawl/tools/checkstyle/filters/SuppressFilterElement.java</fileName>
-    <specifier>assignment</specifier>
-    <message>incompatible types in assignment.</message>
-    <lineContent>messageRegexp = null;</lineContent>
-    <details>
-      found   : null (NullType)
-      required: @Initialized @NonNull Pattern
     </details>
   </checkerFrameworkError>
 
@@ -4916,6 +4850,17 @@
       @Initialized @NonNull boolean equals(@Initialized @NonNull SuppressFilterElement this, @Initialized @NonNull Object p0)
       cannot override method in @Initialized @NonNull Object
       @Initialized @NonNull boolean equals(@Initialized @NonNull Object this, @Initialized @Nullable Object p0)
+    </details>
+  </checkerFrameworkError>
+
+  <checkerFrameworkError unstable="false">
+    <fileName>src/main/java/com/puppycrawl/tools/checkstyle/filters/SuppressFilterElement.java</fileName>
+    <specifier>return</specifier>
+    <message>incompatible types in return.</message>
+    <lineContent>return result;</lineContent>
+    <details>
+      type of expression: @Initialized @Nullable Pattern
+      method return type: @Initialized @NonNull Pattern
     </details>
   </checkerFrameworkError>
 
